@@ -5,7 +5,7 @@ Summary:	Kernel Promise driver
 Summary(pl):	Sterownik Promise dla Linuksa
 Name:		kernel-promise
 Version:	20021113
-%define	rel	1
+%define	rel	2
 Release:	%{rel}@%{_kernel_ver_str}
 License:	BSD-like with partial source only
 Group:		Base/Kernel
