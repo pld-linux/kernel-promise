@@ -1,0 +1,13 @@
+--- promise-20021113/Makefile.org	Fri Jun 28 00:00:00 2002
++++ promise-20021113/Makefile	Thu Nov 14 14:28:28 2002
+@@ -1,8 +1,8 @@
+ CC	= gcc
+ 
+-MODVERSION= -D__KERNEL__ -I- -I. -I./promise_raid_engine -I/usr/src/linux -I/usr/src/linux/include -I/usr/src/linux/include/linux -I/usr/src/linux/drivers/scsi  -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -fno-strict-aliasing -pipe -fno-strength-reduce -m386 -DCPU=386 -DMODULE -DMODVERSIONS -include /usr/src/linux/include/linux/modversions.h  
++MODVERSION= -D__KERNEL__ $(SMP) -I- -I. -I./promise_raid_engine -I/usr/src/linux -I/usr/src/linux/include -I/usr/src/linux/include/linux -I/usr/src/linux/drivers/scsi  -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -fno-strict-aliasing -pipe -fno-strength-reduce -m386 -DCPU=386 -DMODULE -DMODVERSIONS -include /usr/src/linux/include/linux/modversions.h  
+ 
+-NOMODVERSION= -D__KERNEL__ -I- -I. -I./promise_raid_engine -I/usr/src/linux -I/usr/src/linux/include -I/usr/src/linux/include/linux -I/usr/src/linux/drivers/scsi  -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -fno-strict-aliasing -pipe -fno-strength-reduce -m386 -DCPU=386 -DMODULE  
++NOMODVERSION= -D__KERNEL__ $(SMP) -I- -I. -I./promise_raid_engine -I/usr/src/linux -I/usr/src/linux/include -I/usr/src/linux/include/linux -I/usr/src/linux/drivers/scsi  -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -fno-strict-aliasing -pipe -fno-strength-reduce -m386 -DCPU=386 -DMODULE  
+ 
+ FT	= artemis.o utility.o os.o channel.o global.o promise_raid_engine/engine.o wrapper.o fasttrak.o ftlog.o
+ 
