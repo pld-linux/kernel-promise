@@ -3,7 +3,7 @@
 
 Summary:	Kernel Promise driver
 Summary(pl):	Sterownik Promise dla kernela
-Name:		promise
+Name:		kernel-promise
 Version:	20021113
 Release:	1@%{_kernel_ver_str}
 Copyright:	GPL
@@ -28,8 +28,8 @@ Release:	1@%{_kernel_ver_str}
 %description -n kernel-smp-promise
 %description -l pl -n kernel-smp-promise
 
-%prep
-%setup -q
+%prep 
+%setup -q -n promise-%{version}
 
 %patch1 -p1
 
