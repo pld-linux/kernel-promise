@@ -12,6 +12,7 @@ License:	BSD-like with partial source only
 Group:		Base/Kernel
 #Based on http://www.promise.com/support/file/fasttrak_source.zip
 Source0:	promise-20021113.tar.bz2
+# Source0-md5:	69e3896805a6a3d00808cf73d6af0039
 Patch1:		promise-Makefile.patch
 %{!?_without_dist_kernel:BuildRequires:	kernel-source}
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
