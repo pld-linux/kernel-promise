@@ -2,31 +2,41 @@
 %define		no_install_post_compress_modules	1
 
 Summary:	Kernel Promise driver
-Summary(pl):	Sterownik Promise dla kernela
+Summary(pl):	Sterownik Promise dla Linuksa
 Name:		kernel-promise
 Version:	20021113
-Release:	1@%{_kernel_ver_str}
-Copyright:	GPL
+%define	rel	1
+Release:	%{rel}@%{_kernel_ver_str}
+License:	BSD-like with partial source only
 Group:		Base/Kernel
 #Based on http://www.promise.com/support/file/fasttrak_source.zip
 Source0:	promise-20021113.tar.bz2
-#BuildRequires:	kernel-sources
-#Requires:
 Patch1:		promise-Makefile.patch
+%{!?_without_dist_kernel:BuildRequires:	kernel-source}
+%{!?_without_dist_kernel:%requires_releq_kernel_up}
+Requires(post,postun):	/sbin/depmod
+ExclusiveArch:	%{ix86}
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-#%define	_prefix	/usr
-
 %description
+Kernel Promise driver.
 
 %description -l pl
+Sterownik Promise dla Linuksa.
 
 %package -n kernel-smp-promise
 Summary:	Kernel SMP Promise driver
+Summary(pl):	Sterownik Promise dla Linuksa SMP
+Release:	%{rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Release:	1@%{_kernel_ver_str}
+%{!?_without_dist_kernel:%requires_releq_kernel_up}
+Requires(post,postun):	/sbin/depmod
+
 %description -n kernel-smp-promise
-%description -l pl -n kernel-smp-promise
+Kernel SMP Promise driver.
+
+%description -n kernel-smp-promise -l pl
+Sterownik Promise dla Linuksa SMP.
 
 %prep 
 %setup -q -n promise-%{version}
@@ -46,23 +56,25 @@ install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/drivers/ide/
 install ft.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/drivers/ide
 install ft.smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/drivers/ide/ft.o
 
-%post
-/sbin/depmod -a
+%clean
+rm -rf $RPM_BUILD_ROOT
 
-%post -n kernel-smp-promise
+%post
 /sbin/depmod -a
 
 %postun
 /sbin/depmod -a
 
-%postun -n kernel-smp-promise
+%post	-n kernel-smp-promise
 /sbin/depmod -a
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+%postun	-n kernel-smp-promise
+/sbin/depmod -a
 
 %files
-%attr(600,root,root) /lib/modules/%{_kernel_ver}/drivers/ide/ft.o
+%defattr(644,root,root,755)
+/lib/modules/%{_kernel_ver}/drivers/ide/ft.o*
 
 %files -n kernel-smp-promise
-%attr(600,root,root) /lib/modules/%{_kernel_ver}smp/drivers/ide/ft.o
+%defattr(644,root,root,755)
+/lib/modules/%{_kernel_ver}smp/drivers/ide/ft.o*
