@@ -41,7 +41,7 @@ Kernel SMP Promise driver.
 %description -n kernel-smp-promise -l pl
 Sterownik Promise dla Linuksa SMP.
 
-%prep 
+%prep
 %setup -q -n promise-%{version}
 
 %patch1 -p1
