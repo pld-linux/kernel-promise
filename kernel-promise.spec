@@ -1,6 +1,3 @@
-
-%define		no_install_post_compress_modules	1
-
 Summary:	Kernel Promise driver
 Summary(pl):	Sterownik Promise dla Linuksa
 Name:		kernel-promise
