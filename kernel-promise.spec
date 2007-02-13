@@ -3,7 +3,7 @@
 # _without_dist_kernel	- without kernel from distribution
 #
 Summary:	Kernel Promise driver
-Summary(pl.UTF-8):   Sterownik Promise dla Linuksa
+Summary(pl.UTF-8):	Sterownik Promise dla Linuksa
 Name:		kernel-promise
 Version:	20021113
 %define	rel	2
@@ -29,7 +29,7 @@ Sterownik Promise dla Linuksa.
 
 %package -n kernel-smp-promise
 Summary:	Kernel SMP Promise driver
-Summary(pl.UTF-8):   Sterownik Promise dla Linuksa SMP
+Summary(pl.UTF-8):	Sterownik Promise dla Linuksa SMP
 Release:	%{rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
