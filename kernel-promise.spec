@@ -44,7 +44,7 @@ Sterownik Promise dla Linuksa SMP.
 %prep
 %setup -q -n promise-%{version}
 
-%patch1 -p1
+%patch -P1 -p1
 
 %build
 %{__make} SMP="-D__SMP__ -D_KERNEL_SMP=1"
